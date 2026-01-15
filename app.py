@@ -7,6 +7,36 @@ from datetime import datetime
 ORDER_FILE = 'dokan_hishab.csv'
 USER_FILE = 'customers.csv'
 
+# ফাইল তৈরি করার ফাংশন
+def initialize_files():
+    if not os.path.exists(ORDER_FILE):
+        pd.DataFrame(columns=['তারিখ', 'ক্রেতার নাম', 'পণ্য', 'পরিমাণ', 'মোট টাকা (₹)', 'পেমেন্ট মাধ্যম', 'স্ট্যাটাস']).to_csv(ORDER_FILE, index=False)
+    if not os.path.exists(USER_FILE):
+        pd.DataFrame(columns=['নাম', 'মোবাইল_নম্বর', 'পাসওয়ার্ড']).to_csv(USER_FILE, index=False)
+
+initialize_files()
+
+# সেশন স্টেট (লগইন তথ্য মনে রাখার জন্য)
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
+if 'user_name' not in st.session_state:
+    st.session_state['user_name'] = ""
+
+# --- লগইন ও রেজিস্ট্রেশন ---
+if not st.session_state['logged_in']:
+    st.title("🔐 ডিজিটাল দোকানে স্বাগতম")
+    tab1, tab2 = st.tabs(["লগইন", "নতুন রেজিস্ট্রেশন"])
+
+    with tab1:
+        st.subheader("লগইন করুন")import streamlit as st
+import pandas as pd
+import os
+from datetime import datetime
+
+# ফাইলের নামসমূহ
+ORDER_FILE = 'dokan_hishab.csv'
+USER_FILE = 'customers.csv'
+
 # ফাইল তৈরি করার ফাংশন (এরর এড়াতে)
 def initialize_files():
     if not os.path.exists(ORDER_FILE):
@@ -57,3 +87,4 @@ if not st.session_state['logged_in']:
 else:
     st.sidebar.write(f"ব্যবহারকারী: {st.session_state['user_name']}")
     if st.sidebar.button("ল
+
