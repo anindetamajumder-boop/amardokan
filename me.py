@@ -48,7 +48,7 @@ elif choice == "অ্যাডমিন প্যানেল":
     
     admin_password = st.text_input("পাসওয়ার্ড লিখুন", type="password")
     
-    if admin_password == "1234":
+    if admin_password == "rajsona":
         st.success("লগইন সফল!")
         tab1, tab2 = st.tabs(["অর্ডার ম্যানেজমেন্ট", "পণ্য ম্যানেজমেন্ট"])
         
@@ -81,4 +81,5 @@ elif choice == "অ্যাডমিন প্যানেল":
                     st.rerun()
     elif admin_password != "":
         st.error("ভুল পাসওয়ার্ড!")
+
 
