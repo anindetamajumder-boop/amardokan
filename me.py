@@ -35,7 +35,7 @@ if choice == "বাজার করুন":
                 col1, col2, col3 = st.columns([3, 2, 1])
                 name = row.get('Product Name', 'Unknown')
                 price = row.get('Price', 0)
-                unit = row.get('Unit', '') # কেজি/লিটার/প্যাকেট
+                unit = row.get('Unit', '') # কেজি/লিটার/প্যাকেট/গ্রাম
                 
                 col1.write(f"*{name}*")
                 col1.caption(f"পরিমাণ: {unit}") # এখানে কেজি/লিটার দেখাবে
@@ -81,3 +81,4 @@ elif choice == "অ্যাডমিন প্যানেল":
                     st.rerun()
     elif admin_password != "":
         st.error("ভুল পাসওয়ার্ড!")
+
